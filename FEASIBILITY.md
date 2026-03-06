@@ -21,15 +21,37 @@ High-quality satirical content in Bangla is relatively scarce compared to Englis
     - **LoRA (Low-Rank Adaptation):** Efficiently fine-tuning on consumer-grade or mid-range GPUs.
     - **Instruction Tuning:** Framing the task as "Transform this real news to satire: [News] -> [Satire]".
 
-## 4. Hardware Requirements
-- **Fine-tuning:** Minimum 1x A100 (40GB) or 2x RTX 3090/4090 for Llama 3 (8B) LoRA training.
+## 4. Training Infrastructure Options
+To fine-tune a Bangla satire model (e.g., Llama 3 8B), the following cloud platforms are recommended:
+
+### A. Dedicated GPU Cloud Providers (Recommended for Training)
+- **RunPod:**
+    - *Hardware:* RTX 4090 (~$0.40/hr), A100 80GB (~$1.50/hr).
+    - *Pros:* Extremely cost-effective, easy to use with pre-configured PyTorch/Jupyter pods.
+- **Lambda Labs:**
+    - *Hardware:* A100, H100.
+    - *Pros:* High availability of enterprise-grade GPUs, reliable for longer training runs.
+- **Paperspace (DigitalOcean):**
+    - *Pros:* Offers "Gradient" notebooks which are very user-friendly for researchers.
+
+### B. Entry-Level / Experimental
+- **Google Colab (Pro/Pro+):**
+    - *Hardware:* A100 or T4.
+    - *Pros:* Familiar interface, good for initial LoRA experiments on small datasets.
+    - *Cons:* Disconnects can happen; storage management (Google Drive) can be slow for large datasets.
+
+### C. Local Infrastructure
+- If a local machine with an **NVIDIA RTX 3090 or 4090 (24GB VRAM)** is available, it is sufficient for fine-tuning Llama 3 8B using QLoRA.
+
+## 5. Hardware Requirements
+- **Fine-tuning:** Minimum 1x A100 (40GB) or 1x RTX 3090/4090 for Llama 3 (8B) LoRA training.
 - **Inference:** Can run on smaller GPUs (e.g., T4 on Google Colab) using quantization (4-bit/8-bit).
 
-## 5. Feasibility Conclusion
+## 6. Feasibility Conclusion
 **Status: Highly Feasible.**
 While a dedicated end-to-end trained model from scratch is overkill, fine-tuning an existing multilingual LLM (like Llama 3) on a curated Bangla satire dataset is the most efficient path. The primary challenge is the quality of the dataset, which can be mitigated by using a hybrid of scraped data and LLM-assisted synthetic data generation.
 
-## 6. Next Steps for Prototype
+## 7. Next Steps for Prototype
 1. Scrape real-time headlines.
 2. Implement a few-shot prompting baseline using an available LLM.
 3. Build a newspaper-style frontend to host the output.
