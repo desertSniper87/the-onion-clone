@@ -1,7 +1,11 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from .scraper import fetch_real_news
-from .satire_engine import generate_satire_news
+try:
+    from .scraper import fetch_real_news
+    from .satire_engine import generate_satire_news
+except ImportError:
+    from scraper import fetch_real_news
+    from satire_engine import generate_satire_news
 
 app = FastAPI()
 

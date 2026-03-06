@@ -13,6 +13,15 @@ High-quality satirical content in Bangla is relatively scarce compared to Englis
     - Target: 1,000–5,000 high-quality pairs for fine-tuning.
 
 ## 3. Model Selection
+
+### 3.1 "Readymade" Models (Use Immediately)
+While there is no specific "Bangla Satire" model available today, you can use the following high-performing models immediately via API or local hosting with **few-shot prompting**:
+
+1.  **GPT-4o / Claude 3.5 Sonnet (API):** Best performance. These models understand Bangla and the concept of satire deeply. Using 3-5 examples of "Real News -> Satire" in the prompt yields excellent results.
+2.  **TituLM-Gemma-2-2B (`hishab/titulm-gemma-2-2b-v1.1`):** A small but powerful model specifically pre-trained on Bangla. It can be run locally and is capable of following instructions to generate creative text.
+3.  **BanglaT5 (`csebuetnlp/banglat5`):** Although it is a seq2seq model (like T5), it has been benchmarked for "News Headline Generation" and can be used for satirizing headlines with the right fine-tuning or prompt.
+
+### 3.2 Fine-tuned Models (Future Goal)
 - **Base Models:**
     - **Llama 3 (8B/70B):** Strong multilingual capabilities, including Bangla.
     - **Claude 3.5 Sonnet / GPT-4o:** Best for zero-shot/few-shot baselines and generating synthetic training data.
