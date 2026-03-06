@@ -80,7 +80,7 @@ export default function Home() {
                 <span className="font-bold text-black mr-2">{featuredStory.author}</span> | <span>২ মিনিট আগে</span>
               </div>
               <p className="text-lg leading-relaxed text-justify">
-                রাজধানীর ব্যস্ততম সড়কে এখন শুধুই পানির হাহাকার। তবে এই হাহাকার খাওয়ার পানির জন্য নয়, বরং গাড়ি চালানোর জন্য। গতকাল এক বিশেষ সংবাদ সম্মেলনে বিশেষজ্ঞরা দাবি করেন যে, এই ঘটনার পেছনে আসল খবর হলো: "{featuredStory.original}"।
+                রাজধানীর ব্যস্ততম সড়কে এখন শুধুই পানির হাহাকার। তবে এই হাহাকার খাওয়ার পানির জন্য নয়, বরং গাড়ি চালানোর জন্য। গতকাল এক বিশেষ সংবাদ সম্মেলনে বিশেষজ্ঞরা দাবি করেন যে, এই ঘটনার পেছনে আসল খবর হলো: &quot;{featuredStory.original}&quot;।
               </p>
             </article>
           )}
@@ -101,7 +101,7 @@ export default function Home() {
           <div className="space-y-6">
             {opinionStories.map(story => (
               <div key={story.id} className="italic border-b border-gray-200 pb-4">
-                <p className="font-bold text-lg hover:underline cursor-pointer">"{story.title}"</p>
+                <p className="font-bold text-lg hover:underline cursor-pointer">&quot;{story.title}&quot;</p>
                 <p className="text-sm text-gray-600 mt-2">— {story.author}</p>
               </div>
             ))}
