@@ -16,6 +16,10 @@ class NewsScraper:
         url = "https://bdnews24.com/"
         return self._generic_scrape(url, ['h1', 'h2', 'h3'], "bdnews24")
 
+    def scrape_ittefaq(self):
+        url = "https://www.ittefaq.com.bd/"
+        return self._generic_scrape(url, ['h1', 'h2', 'h3'], "Ittefaq")
+
     def _generic_scrape(self, url, tags, source_name):
         try:
             response = requests.get(url, headers=self.headers, timeout=15)
@@ -26,7 +30,11 @@ class NewsScraper:
             for tag in tags:
                 for item in soup.find_all(tag):
                     text = item.get_text(strip=True)
-                    if text and len(text) > 20 and text not in headlines:
+                    # Filter out short texts and menu items
+                    if text and len(text) > 25 and text not in headlines:
+                        # Basic filtering for common menu items found in scraping
+                        if any(menu in text for menu in ["সেকশন", "অনুসন্ধান", "ই-পেপার"]):
+                            continue
                         headlines.append(text)
 
             print(f"Successfully scraped {len(headlines)} headlines from {source_name}")
@@ -39,11 +47,12 @@ def fetch_real_news():
     scraper = NewsScraper()
     all_headlines = []
     all_headlines.extend(scraper.scrape_prothom_alo())
-    # Adding more sources as needed
+    all_headlines.extend(scraper.scrape_ittefaq())
     return all_headlines
 
 if __name__ == "__main__":
-    news = fetch_real_news()
-    print(f"\nTotal Fetched Headlines: {len(news)}")
-    for i, h in enumerate(news[:10], 1):
-        print(f"{i}. {h}")
+    scraper = NewsScraper()
+    palo = scraper.scrape_prothom_alo()
+    ittefaq = scraper.scrape_ittefaq()
+    print(f"\nProthom Alo: {len(palo)}")
+    print(f"Ittefaq: {len(ittefaq)}")

@@ -16,7 +16,10 @@ High-quality satirical content in Bangla is relatively scarce compared to Englis
 - **Base Models:**
     - **Llama 3 (8B/70B):** Strong multilingual capabilities, including Bangla.
     - **Claude 3.5 Sonnet / GPT-4o:** Best for zero-shot/few-shot baselines and generating synthetic training data.
-    - **Bangla-specific models:** Researching open-source Bangla-tuned models from platforms like Hugging Face.
+- **Bangla-specific models:**
+    - **BanglaT5 (`csebuetnlp/banglat5`):** Excellent for seq2seq tasks like News Headline Generation (NHG).
+    - **TituLM (`hishab/titulm-gemma-2-2b-v1.1`):** A 2B parameter model specifically pre-trained for high-quality Bangla text generation.
+    - **SahajBERT (`neuropark/sahajBERT`):** Useful for news classification and context understanding.
 - **Techniques:**
     - **LoRA (Low-Rank Adaptation):** Efficiently fine-tuning on consumer-grade or mid-range GPUs.
     - **Instruction Tuning:** Framing the task as "Transform this real news to satire: [News] -> [Satire]".
