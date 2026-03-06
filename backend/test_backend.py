@@ -1,9 +1,10 @@
 import pytest
-from backend.scraper import fetch_real_news
+from backend.scraper import NewsScraper
 from backend.satire_engine import satirize, generate_satire_news
 
 def test_scraper():
-    news = fetch_real_news()
+    scraper = NewsScraper()
+    news = scraper.scrape_prothom_alo()
     assert isinstance(news, list)
     assert len(news) > 0
     assert all(isinstance(h, str) for h in news)
