@@ -5,7 +5,7 @@
 
 ## Sections
 
-1. [Overview](1-overview/README.md) - Feasibility study and project goals.
+1. [Overview](1-overview/README.md) - Feasibility study, project goals, and next-step pointers.
 2. [Architecture](2-architecture/README.md) - System design and data flow pipeline.
     - [ADR-001: Prototype Tech Stack](2-architecture/decisions/ADR-001-prototype-tech-stack.md)
 3. [Agents](3-agents/README.md) - Agentic workflows.
